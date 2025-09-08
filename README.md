@@ -1,7 +1,7 @@
-# Template Portfolio
+# My Portfolio
 
 # About Me
-*My name is Khyatee Atolia. I'm a junior at Wellesley studying Mathematics and Computer Science, and it's nice to meet you!*
+*Hello! My name is Khyatee Atolia. I'm a junior at Wellesley studying Mathematics and Computer Science, and it's nice to meet you!*
 
 Some fun facts about me:
 1. I love to write stories.
