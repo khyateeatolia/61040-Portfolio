@@ -8,7 +8,8 @@ Some fun facts about me:
 2. I rock climb.
 3. I do not have an extra bone in my right foot. 
 
-![picture of snow leopard mama and baby](https://pbs.twimg.com/media/GzYlia3XMAAWfm4?format=jpg&name=4096x4096)
+<img width="500" height="334" alt="image" src="https://github.com/user-attachments/assets/a421f7e4-dfa6-4184-ab04-880bc65199a4" />
+
 
 
 # Table of Contents
