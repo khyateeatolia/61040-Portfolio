@@ -116,9 +116,9 @@ Ghosting is pervasive and emotionally damaging and can be addressable via respec
 - [Comparable – Poshmark](https://poshmark.com/) – Marketplace model with fees, not peer sharing.  
 - [Comparable – Facebook Marketplace](https://www.facebook.com/marketplace/) – Used by students but cluttered and unmoderated.  
 - [EcoWatch – Clothing Swap Events](https://www.ecowatch.com/clothing-swap-events.html) – Popularity of swaps shows demand, but they are irregular.
-- The below is a screenshot from my question on Wellesley's channel on Sidechat, a popular app within the college. This is an informal poll with a high number of upvotes (475 is considerably high for a small school like Wellesley where the student population is ~2400, and not everyone is on this app.) and signals towards an authentic demand: 
+- Attached below is a screenshot from my question on Wellesley's channel on Sidechat, a popular app within the college. This is an informal poll with a high number of upvotes (475 is considerably high for a small school like Wellesley where the student population is ~2400, and not everyone is on this app.), signalling towards an authentic demand: 
 
-<img src="https://github.com/user-attachments/assets/61bd24f6-11ba-4fd2-9616-7a5172b13404" width="400" />
+<img src="https://github.com/user-attachments/assets/61bd24f6-11ba-4fd2-9616-7a5172b13404" width="600" />
 
 
 ---
