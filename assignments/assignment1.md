@@ -103,7 +103,9 @@ Ghosting is pervasive and emotionally damaging and can be addressable via respec
 - [Comparable – Depop](https://www.depop.com/) – Popular with students but lacks trust features for campuses.  
 - [Comparable – Poshmark](https://poshmark.com/) – Marketplace model with fees, not peer sharing.  
 - [Comparable – Facebook Marketplace](https://www.facebook.com/marketplace/) – Used by students but cluttered and unmoderated.  
-- [EcoWatch – Clothing Swap Events](https://www.ecowatch.com/clothing-swap-events.html) – Popularity of swaps shows demand, but they are irregular.  
+- [EcoWatch – Clothing Swap Events](https://www.ecowatch.com/clothing-swap-events.html) – Popularity of swaps shows demand, but they are irregular.
+- <img width="1640" height="2035" alt="image" src="https://github.com/user-attachments/assets/61bd24f6-11ba-4fd2-9616-7a5172b13404" />
+
 
 ### Problem C: Ghosting in Online Dating
 - [BBC – Why Ghosting Hurts](https://www.bbc.com/worklife/article/20191021-why-ghosting-hurts) – Explains emotional harm caused by ghosting.  
