@@ -119,7 +119,7 @@ Ghosting is pervasive and emotionally damaging and can be addressable via respec
 
 ---
 
-7. Feature Ideas  
+## 7. Feature Ideas  
 
 A. Preventing Missed Student Deadlines  
 
