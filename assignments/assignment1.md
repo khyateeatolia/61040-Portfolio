@@ -119,19 +119,25 @@ Ghosting is pervasive and emotionally damaging and can be addressable via respec
 
 ---
 
-## 7. Feature Ideas
+7. Feature Ideas  
 
-**A. Preventing Missed Student Deadlines**  
-1. Smart Deadline Digest – A personalized daily digest that aggregates and prioritizes deadlines.  
-2. Progress Nudges with Gamification – Gentle reminders and progress bars for upcoming tasks.  
-3. Feedback Loop for Staff – Analytics on missed events to improve communication.  
+A. Preventing Missed Student Deadlines  
 
-**B. Campus Clothing Sharing**  
-1. Auction Posts – Students can post clothing and receive bids.  
-2. Community Match Recommendations – Suggests items based on preferences and past buys.  
-3. Safety Assurance Badges – Hygiene verified or reviewed contributors build trust.  
+1. **Smart Deadline Digest** – A personalized daily digest that aggregates and prioritizes deadlines from multiple posts and opportunities into one feed. Helps students focus on what matters now.  
+2. **Progress Nudges with Gamification** – Gentle reminders and visual progress bars when big deadlines approach, turning task completion into achievable milestones. Encourages early action.  
+3. **Feedback Loop for Staff** – Students can flag a “missed this” event; student and college staff get analytics on communication gaps, enabling better outreach.  
 
-**C. Anti Ghosting Dating App**  
-1. Graceful Exit Button – Templates for closure messages.  
-2. Closure Prompt Timer – Encourages respectful endings after inactivity.  
-3. Empathy Score Display – Reflects user behavior and incentivizes empathy.  
+
+B. Campus Clothing Sharing  
+
+1. **Auction Posts** – A simple tool for students to post clothing or other items, and a bidding interface where students can make their price offers.  
+2. **Community Match Recommendations** – Suggest items based on user preferences and past buys, promoting sharing without mass networks.  
+3. **Safety Assurance Badges** – Optional badges for hygiene-verified or reviewed contributors, encouraging trust among users.  
+
+
+C. Anti-Ghosting Dating App  
+
+1. **Graceful Exit Button** – One-tap closure message templates like “I don’t feel a spark, but enjoyed chatting.” This helps normalize closure with minimal effort.  
+2. **Closure Prompt Timer** – If messages go unanswered for a few days, the user is gently asked: “Would you like to send a friendly goodbye?” Encourages respectful endings.  
+3. **Empathy Score Display** – Reflects how often a user closes conversations respectfully; signals social norms and incentivizes empathetic behavior.  
+
