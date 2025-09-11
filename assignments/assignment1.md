@@ -91,7 +91,19 @@ Ghosting is pervasive and emotionally damaging and can be addressable via respec
 - [Inside Higher Ed – Students Struggle with Digital Overload](https://www.insidehighered.com/) – Discusses how fragmented portals contribute to deadline issues.  
 - [MIT Registrar Deadlines Page](https://registrar.mit.edu/calendar/deadlines) – Shows the overwhelming number of deadlines students must track.  
 - [University of Michigan Student Success Report](https://studentlife.umich.edu/) – Notes failure of success initiatives due to poor communication.  
-- [Comparable – MyStudyLife App](https://www.mystudylife.com/) – A planner app that lacks registrar integration, showing a gap.  
+- [Comparable – MyStudyLife App](https://www.mystudylife.com/) – A planner app that lacks registrar integration, showing a gap.
+
+### Problem C: Ghosting in Online Dating
+- [BBC – Why Ghosting Hurts](https://www.bbc.com/worklife/article/20191021-why-ghosting-hurts) – Explains emotional harm caused by ghosting.  
+- [Psychology Today – The Rise of Ghosting](https://www.psychologytoday.com/us/blog/fulfillment-any-age/201907/why-people-ghost) – Details reasons people ghost and its impact.  
+- [The Guardian – Ghosting in Modern Dating](https://www.theguardian.com/lifeandstyle/2022/sep/04/ghosting-why-we-do-it) – Shows normalization of ghosting in dating apps.  
+- [Pew Research – Dating App Experiences](https://www.pewresearch.org/internet/2020/02/06/the-virtues-and-downsides-of-online-dating/) – Reports that over 50 percent of dating app users experience ghosting.  
+- [Forbes – The Dark Side of Ghosting](https://www.forbes.com/sites/traversmark/2019/11/19/the-dark-side-of-ghosting/) – Connects ghosting to anxiety and depression.  
+- [The Atlantic – Why People Ghost](https://www.theatlantic.com/family/archive/2019/12/why-do-people-ghost/603754/) – Explores social and psychological drivers.  
+- [Comparable – Bumble](https://bumble.com/) – Adds safety features but does not solve ghosting.  
+- [Comparable – Hinge](https://hinge.co/) – Focuses on meaningful profiles but ghosting persists.  
+- [Comparable – Coffee Meets Bagel](https://coffeemeetsbagel.com/) – Fewer matches but lacks closure tools.  
+- [CNBC – Online Dating Industry Growth](https://www.cnbc.com/2021/03/01/online-dating-industry-worth-10-billion.html) – Confirms industry scale, showing market potential. 
 
 ### Problem B: Unsustainable Clothing Habits Among Students
 - [The Guardian – Fast Fashion’s Environmental Impact](https://www.theguardian.com/fashion/2023/jun/05/fast-fashion-environment) – Outlines fashion’s role in pollution and waste.  
@@ -104,20 +116,10 @@ Ghosting is pervasive and emotionally damaging and can be addressable via respec
 - [Comparable – Poshmark](https://poshmark.com/) – Marketplace model with fees, not peer sharing.  
 - [Comparable – Facebook Marketplace](https://www.facebook.com/marketplace/) – Used by students but cluttered and unmoderated.  
 - [EcoWatch – Clothing Swap Events](https://www.ecowatch.com/clothing-swap-events.html) – Popularity of swaps shows demand, but they are irregular.
-- <img width="1640" height="2035" alt="image" src="https://github.com/user-attachments/assets/61bd24f6-11ba-4fd2-9616-7a5172b13404" />
+- The below is a screenshot from my question on Wellesley's channel on Sidechat, a popular app within the college. This is an informal poll with a high number of upvotes (475 is considerably high for a small school like Wellesley where the student population is ~2400, and not everyone is on this app.) and signals towards an authentic demand: 
 
+<img src="https://github.com/user-attachments/assets/61bd24f6-11ba-4fd2-9616-7a5172b13404" width="400" />
 
-### Problem C: Ghosting in Online Dating
-- [BBC – Why Ghosting Hurts](https://www.bbc.com/worklife/article/20191021-why-ghosting-hurts) – Explains emotional harm caused by ghosting.  
-- [Psychology Today – The Rise of Ghosting](https://www.psychologytoday.com/us/blog/fulfillment-any-age/201907/why-people-ghost) – Details reasons people ghost and its impact.  
-- [The Guardian – Ghosting in Modern Dating](https://www.theguardian.com/lifeandstyle/2022/sep/04/ghosting-why-we-do-it) – Shows normalization of ghosting in dating apps.  
-- [Pew Research – Dating App Experiences](https://www.pewresearch.org/internet/2020/02/06/the-virtues-and-downsides-of-online-dating/) – Reports that over 50 percent of dating app users experience ghosting.  
-- [Forbes – The Dark Side of Ghosting](https://www.forbes.com/sites/traversmark/2019/11/19/the-dark-side-of-ghosting/) – Connects ghosting to anxiety and depression.  
-- [The Atlantic – Why People Ghost](https://www.theatlantic.com/family/archive/2019/12/why-do-people-ghost/603754/) – Explores social and psychological drivers.  
-- [Comparable – Bumble](https://bumble.com/) – Adds safety features but does not solve ghosting.  
-- [Comparable – Hinge](https://hinge.co/) – Focuses on meaningful profiles but ghosting persists.  
-- [Comparable – Coffee Meets Bagel](https://coffeemeetsbagel.com/) – Fewer matches but lacks closure tools.  
-- [CNBC – Online Dating Industry Growth](https://www.cnbc.com/2021/03/01/online-dating-industry-worth-10-billion.html) – Confirms industry scale, showing market potential.  
 
 ---
 
