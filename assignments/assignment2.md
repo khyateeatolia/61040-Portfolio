@@ -1,8 +1,6 @@
-Perfect — thanks for pulling all that together. I’ll now **compile everything into one clean, consistent Markdown file** that you can copy/paste or save directly as `concepts.md`.
 
-Here’s the unified file:
 
-```markdown
+
 # Concept Exercises
 
 ---
@@ -66,7 +64,7 @@ This avoids duplication and allows flexibility across domains.
 
 The state should include a set of users, each with a username, a password, and a flag indicating whether the user is confirmed. This ensures that the system can check uniqueness of usernames, verify authentication against stored credentials, and enforce whether a user is active or not.
 
-```
+
 
 state
 a set of Users with
@@ -74,31 +72,30 @@ a username String
 a password String
 a confirmed Flag
 
-```
 
 ---
 
 ## Register Action
 
-```
+
 
 register (username: String, password: String): (user: User)
 requires no user exists with this username
 effects create a new user with this username and password and confirmed set to false
 
-```
+
 
 ---
 
 ## Authenticate Action
 
-```
+
 
 authenticate (username: String, password: String): (user: User)
 requires a user exists with this username and password and confirmed is true
 effects return that user
 
-```
+
 
 ---
 
@@ -112,7 +109,7 @@ This ensures that each login is unambiguous and consistent. The invariant is pre
 
 ## Extension with Email Confirmation
 
-```
+
 
 state
 a set of Users with
@@ -131,13 +128,13 @@ confirm (username: String, token: String)
 requires a user exists with this username and this token
 effects set confirmed to true for this user
 
-```
+
 
 ---
 
 # Question 2: Personal Access Tokens
 
-```
+
 
 concept PersonalAccessToken \[User]
 purpose allow users to authenticate using tokens with defined permissions instead of their main password
@@ -175,7 +172,7 @@ authorizeTokenSSO (token: Token, organization: Organization)
 requires token exists, user belongs to organization, and organization uses SSO
 effects set ssoAuthorized = true for that token
 
-```
+
 
 ---
 
@@ -201,7 +198,7 @@ effects set ssoAuthorized = true for that token
 
 ## Concept 1: URLShortener
 
-```
+
 
 concept URLShortener \[User, URL]
 purpose provide short, unique links that redirect to longer URLs
@@ -229,7 +226,7 @@ resolve (suffix: String): (url: URL)
 requires mapping exists with this suffix and is active
 effects return target URL
 
-```
+
 
 **Notes:** Must prevent suffix collisions. Deactivation allows removal without losing history.  
 
@@ -237,7 +234,7 @@ effects return target URL
 
 ## Concept 2: BillableHoursTracking
 
-```
+
 
 concept BillableHoursTracking \[Employee, Project]
 purpose track time spent by employees on projects for billing clients
@@ -267,7 +264,6 @@ queryHours (employee: Employee, project: Project): (totalHours: Number)
 requires true
 effects return sum of (endTime - startTime) for all closed sessions of this employee on this project
 
-```
 
 **Notes:** `autoClose` ensures forgotten sessions are handled, maintaining billing accuracy.  
 
@@ -275,7 +271,6 @@ effects return sum of (endTime - startTime) for all closed sessions of this empl
 
 ## Concept 3: TimeBasedOneTimePassword (TOTP)
 
-```
 
 concept TimeBasedOneTimePassword \[User]
 purpose strengthen authentication by requiring a temporary numeric code from the user’s device in addition to their main password
@@ -301,9 +296,3 @@ and code matches secret for time within allowed window
 and code ≠ lastAcceptedCode
 effects return user; set lastAcceptedCode = code
 
-```
-
-**Notes:** TOTP improves security by requiring a physical device and limiting code lifetime. Still vulnerable to phishing or real-time relay attacks.  
-
----
-```
