@@ -1,11 +1,11 @@
 
 
 
-# Concept Exercises
+# Assignment 2
 
 ---
 
-## Invariants
+## Question 1: Registry
 
 One invariant is that the number of items requested must always equal the initial count minus the number of items purchased. Another invariant is that every purchase must correspond to an existing request in the same registry. The invariant about counts is more important because it ensures that givers cannot purchase more than what was originally requested, which would break the core purpose of the registry.  
 
@@ -13,7 +13,6 @@ The action most affected is **purchase**, and it preserves the invariant by crea
 
 ---
 
-## Fixing an Action
 
 The action **addItem** can break the important count invariant if new quantities are added after some purchases have already been made, since this can cause the totals to drift from the intended request balance.  
 
@@ -21,7 +20,6 @@ A fix would be to prevent the addition of items once the registry is active, or 
 
 ---
 
-## Inferring Behavior
 
 The specification allows a registry to be opened and closed multiple times, since neither action prevents reactivation after closure.  
 
@@ -29,28 +27,21 @@ Allowing this makes sense because a recipient might wish to reopen a registry if
 
 ---
 
-## Registry Deletion
-
 The absence of a delete action may matter in practice because users might want to remove old or erroneous registries to avoid clutter and confusion. However, since closed registries are no longer visible to givers, deletion is not strictly necessary and archival may be sufficient.  
 
 ---
 
-## Queries
 
 - A common query for the registry owner is to see which items were purchased and by whom.  
 - A common query for a giver is to see which items are still available in an active registry so that they do not duplicate someone else’s purchase.  
 
 ---
 
-## Hiding Purchases
-
 To allow the recipient to hide purchases, the state of the registry could include a flag such as `hidePurchases`, that is controlled by the owner.  
 
 Actions that reveal purchase details would then check this flag before returning information, thereby enabling surprise when desired.  
 
 ---
-
-## Generic Types
 
 Using generic types for `User` and `Item` is preferable because it makes the concept reusable in many systems. For instance, `Item` can be defined in a commerce system by SKU codes or product IDs, while names, prices, and descriptions belong in other concepts.  
 
@@ -65,13 +56,13 @@ This avoids duplication and allows flexibility across domains.
 The state should include a set of users, each with a username, a password, and a flag indicating whether the user is confirmed. This ensures that the system can check uniqueness of usernames, verify authentication against stored credentials, and enforce whether a user is active or not.
 
 
-
+```
 state
-a set of Users with
-a username String
-a password String
-a confirmed Flag
-
+  a set of Users with
+  a username String
+  a password String
+  a confirmed Flag
+```
 
 ---
 
