@@ -56,15 +56,13 @@ state
 
 ---
 
-2. Register Action
+2. Actions:
 
 ```
 register (username: String, password: String): (user: User)
   requires no user exists with this username
   effects create a new user with this username and password and confirmed set to false
 ```
-
-Authenticate Action
 
 ```
 authenticate (username: String, password: String): (user: User)
