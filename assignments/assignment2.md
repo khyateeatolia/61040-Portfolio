@@ -8,7 +8,6 @@
 ## Question 1: Registry
 
 1. One invariant is that the number of items requested must always equal the initial count minus the number of items purchased. Another invariant is that every purchase must correspond to an existing request in the same registry. The invariant about counts is more important because it ensures that givers cannot purchase more than what was originally requested, which would break the core purpose of the registry.  
-
 The action most affected is **purchase**, and it preserves the invariant by creating a purchase and reducing the count of the matching request.  
 
 ---
