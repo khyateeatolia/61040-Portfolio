@@ -7,53 +7,50 @@
 
 ## Question 1: Registry
 
-One invariant is that the number of items requested must always equal the initial count minus the number of items purchased. Another invariant is that every purchase must correspond to an existing request in the same registry. The invariant about counts is more important because it ensures that givers cannot purchase more than what was originally requested, which would break the core purpose of the registry.  
+1. One invariant is that the number of items requested must always equal the initial count minus the number of items purchased. Another invariant is that every purchase must correspond to an existing request in the same registry. The invariant about counts is more important because it ensures that givers cannot purchase more than what was originally requested, which would break the core purpose of the registry.  
 
 The action most affected is **purchase**, and it preserves the invariant by creating a purchase and reducing the count of the matching request.  
 
 ---
 
 
-The action **addItem** can break the important count invariant if new quantities are added after some purchases have already been made, since this can cause the totals to drift from the intended request balance.  
+2. The action **addItem** can break the important count invariant if new quantities are added after some purchases have already been made, since this can cause the totals to drift from the intended request balance.  
 
 A fix would be to prevent the addition of items once the registry is active, or to treat new items as fresh requests that start with an independent count, thereby preserving the correctness of the count invariant.  
 
 ---
 
 
-The specification allows a registry to be opened and closed multiple times, since neither action prevents reactivation after closure.  
+3. The specification allows a registry to be opened and closed multiple times, since neither action prevents reactivation after closure.  
 
 Allowing this makes sense because a recipient might wish to reopen a registry if more gifts are desired, or if the time window for giving is extended.  
 
 ---
 
-The absence of a delete action may matter in practice because users might want to remove old or erroneous registries to avoid clutter and confusion. However, since closed registries are no longer visible to givers, deletion is not strictly necessary and archival may be sufficient.  
+4. The absence of a delete action may matter in practice because users might want to remove old or erroneous registries to avoid clutter and confusion. However, since closed registries are no longer visible to givers, deletion is not strictly necessary and archival may be sufficient.  
 
 ---
 
-
+5. Queries: 
 - A common query for the registry owner is to see which items were purchased and by whom.  
 - A common query for a giver is to see which items are still available in an active registry so that they do not duplicate someone else’s purchase.  
 
 ---
 
-To allow the recipient to hide purchases, the state of the registry could include a flag such as `hidePurchases`, that is controlled by the owner.  
+6. To allow the recipient to hide purchases, the state of the registry could include a flag such as `hidePurchases`, that is controlled by the owner.  
 
 Actions that reveal purchase details would then check this flag before returning information, thereby enabling surprise when desired.  
 
 ---
 
-Using generic types for `User` and `Item` is preferable because it makes the concept reusable in many systems. For instance, `Item` can be defined in a commerce system by SKU codes or product IDs, while names, prices, and descriptions belong in other concepts.  
-
-This avoids duplication and allows flexibility across domains.  
+7. Using generic types for `User` and `Item` is preferable because it makes the concept reusable in many systems. For instance, `Item` can be defined in a commerce system by SKU codes or product IDs, while names, prices, and descriptions belong in other concepts. This avoids duplication and allows flexibility across domains.  
 
 ---
 
 # Question 2: User Authentication
 
-## Concept State
 
-The state should include a set of users, each with a username, a password, and a flag indicating whether the user is confirmed. This ensures that the system can check uniqueness of usernames, verify authentication against stored credentials, and enforce whether a user is active or not.
+1. The state should include a set of users, each with a username, a password, and a flag indicating whether the user is confirmed. This ensures that the system can check uniqueness of usernames, verify authentication against stored credentials, and enforce whether a user is active or not.
 
 
 ```
@@ -66,59 +63,53 @@ state
 
 ---
 
-## Register Action
+2. Register Action
 
-
-
+```
 register (username: String, password: String): (user: User)
-requires no user exists with this username
-effects create a new user with this username and password and confirmed set to false
+  requires no user exists with this username
+  effects create a new user with this username and password and confirmed set to false
+```
 
+Authenticate Action
 
-
----
-
-## Authenticate Action
-
-
-
+```
 authenticate (username: String, password: String): (user: User)
-requires a user exists with this username and password and confirmed is true
-effects return that user
-
+  requires a user exists with this username and password and confirmed is true
+  effects return that user
+```
 
 
 ---
 
-## Essential Invariant
+3. Essential Invariant
 
-The essential invariant is that no two users can have the same username.  
-
-This ensures that each login is unambiguous and consistent. The invariant is preserved by the register action because it explicitly requires that no user with the same username already exists before creating a new one.  
+The essential invariant is that no two users can have the same username.  This ensures that each login is unambiguous and consistent. The invariant is preserved by the register action because it explicitly requires that no user with the same username already exists before creating a new one.  
 
 ---
 
-## Extension with Email Confirmation
+4. Extension with Email Confirmation
 
-
-
+```
 state
-a set of Users with
-a username String
-a password String
-a confirmed Flag
-a token String
+  a set of Users with
+  a username String
+  a password String
+  a confirmed Flag
+  a token String
+```
 
+```
 register (username: String, password: String): (user: User, token: String)
-requires no user exists with this username
-effects create a new user with this username and password and confirmed set to false
-generate a secret token and associate it with the user
-return the user and the token
+  requires no user exists with this username
+  effects create a new user with this username and password and confirmed set to false
+  generate a secret token and associate it with the user
+  return the user and the token
 
 confirm (username: String, token: String)
-requires a user exists with this username and this token
-effects set confirmed to true for this user
-
+  requires a user exists with this username and this token
+  effects set confirmed to true for this user
+```
 
 
 ---
