@@ -5,12 +5,10 @@
 ### Purpose of Contexts
 
 1. Contexts exist so that we can generate unique strings relative to some namespace rather than globally. Without contexts, the `NonceGeneration` concept would have to guarantee that no string is ever reused anywhere, which is often unnecessary and too restrictive. Contexts let us assign unique scopes to a particular domain.
-
 In the URL shortening app, the natural context is the **shortUrlBase** (the domain part of the short URL). For example, if the service allows different users to use their own domains (like `tinyurl.com` vs. `sho.rt` vs. `mydomain.org`), then uniqueness only needs to be enforced within each base. So, in the URL shortening app, each `shortUrlBase` would be a separate context.
 
 
 2. The `NonceGeneration` concept must store sets of used strings because its principle requires that every generated string be unique within a given context, which means the system needs to keep track of what has already been produced in order to prevent duplicates.
-
 In the case of a counter implementation, the abstract set of used strings specified in the concept corresponds exactly to the set of all strings generated from the counter values up to the current one—for example, if the counter is at value *n*, then the abstract set of used strings is `{ f(0), f(1), …, f(n) }`, where *f* is the encoding function. Thus, the counter serves as a compact representation of the entire set, and the abstraction function that maps between the implementation and the specification interprets the counter as standing for all the strings that have already been generated.
 
 
@@ -18,7 +16,6 @@ In the case of a counter implementation, the abstract set of used strings specif
 Easier to remember and share. A short URL like `sho.rt/apple-banana` is more human-friendly than `sho.rt/X9qT2z`. Users can also type it directly without the need to copy-paste.
 **Disadvantage (for users):**
 Less space-efficient. The pool of common words is much smaller than the pool of arbitrary alphanumeric strings of the same length, so URLs may need to be longer (multiple words) to avoid collisions. Also, some generated words/phrases may be offensive or embarrassing unless filtered.
-
 **Modified Concept:**
 
 ```plaintext
