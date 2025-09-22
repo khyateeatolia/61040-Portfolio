@@ -14,6 +14,6 @@ Some fun facts about me:
 
 # Table of Contents
 [Link to Assignment 1](assignments/assignment1.md)  
-[Link to Assignment 2](assignments/assignment2.md)
-[Link to Assignment 2](assignments/assignment3.md)
+[Link to Assignment 2](assignments/assignment2.md)  
+[Link to Assignment 3](assignments/assignment3.md)
 
