@@ -53,13 +53,10 @@ The application reduces the mess and risks of informal secondhand clothing excha
 
 ---
 
-# 3 — Concept design 
+## Concept design 
 
-I follow the Essence of Software guidance: each concept specifies *purpose*, *types*, *state*, *actions*, and *notifications/side-effects*.
 
----
-
-## Concept A — `UserAccount`
+### Concept A — `UserAccount`
 
 **Purpose:**
 Authenticate students via school email, assign them a unique username and `UserId`, and maintain their profile page (including their listings).
@@ -107,7 +104,7 @@ Authenticate students via school email, assign them a unique username and `UserI
 
 ---
 
-## Concept B — `ItemListing`
+### Concept B — `ItemListing`
 
 **Purpose:**
 Represent an item for sale or exchange and track its lifecycle (active, withdrawn, sold).
@@ -155,7 +152,7 @@ Represent an item for sale or exchange and track its lifecycle (active, withdraw
 
 ---
 
-## Concept C — `Bidding`
+### Concept C — `Bidding`
 
 **Purpose:**
 Allow buyers to place bids on active listings, track bidding history, and expose current top bids.
@@ -190,7 +187,7 @@ Allow buyers to place bids on active listings, track bidding history, and expose
 
 ---
 
-## Concept D — `MessagingThread`
+### Concept D — `MessagingThread`
 
 **Purpose:**
 Support structured communication between buyers and sellers around a listing, including pickup arrangements and moderation.
@@ -226,7 +223,7 @@ Support structured communication between buyers and sellers around a listing, in
 
 ---
 
-## Concept E — `Feed`
+### Concept E — `Feed`
 
 **Purpose:**
 Maintain a browsable and filterable view of available listings for all users.
@@ -261,7 +258,7 @@ Maintain a browsable and filterable view of available listings for all users.
 
 ---
 
-# 4 — Essential synchronizations
+## Synchronizations
 
 ---
 
@@ -325,18 +322,17 @@ Maintain a browsable and filterable view of available listings for all users.
   * Notify moderator for review.
 * **Rationale:** Supports safety and accountability in user interactions.
 
----
 
 The five concepts together form the foundation for CampusCloset. `UserAccount` ensures that only verified students with unique usernames can act in the system and provides public profile pages. `ItemListing` manages the representation and lifecycle of items, while `Bidding` tracks transparent bid histories. `MessagingThread` supports structured communication, and `Feed` provides searchable and filterable access to items. Synchronizations ensure that actions flow smoothly between concepts without breaking modularity.
 
 ---
 
-### UX designs
-<img src="https://github.com/user-attachments/assets/4858e6ea-68fd-44b6-b637-f07214d26ec6" alt="Image 1" width="350"/>
+## UX designs
+<img src="https://github.com/user-attachments/assets/4858e6ea-68fd-44b6-b637-f07214d26ec6" alt="Image 1" width="400"/>
 
-<img src="https://github.com/user-attachments/assets/ae70e8fc-2a77-48cd-bf66-3ab64d92b89c" alt="Image 2" width="350"/>
+<img src="https://github.com/user-attachments/assets/ae70e8fc-2a77-48cd-bf66-3ab64d92b89c" alt="Image 2" width="400"/>
 
-<img src="https://github.com/user-attachments/assets/1ebcf4eb-8776-4785-b7dd-f37b952deb74" alt="Image 3" width="350"/>
+<img src="https://github.com/user-attachments/assets/1ebcf4eb-8776-4785-b7dd-f37b952deb74" alt="Image 3" width="400"/>
 
 ---
 
@@ -359,5 +355,4 @@ The seller decides to give the coat to Maya, and Maya opens a messaging thread w
 **Step 5: Completing the Exchange**  
 The next day, Maya meets the seller, tries on the coat, and finalizes the purchase. Back in the app, the seller marks the pickup as complete in the chat thread. The coat listing automatically updates to “Sold,” and it no longer appears in the feed.
 
-**Outcome**  
 In a single experience, Maya has sold her unused dress and purchased a coat, all within her campus community. She feels reassured by the verified profiles and enjoys the simplicity of browsing listings with filters. Her profile page now reflects her sold and active listings, making it easy for other students to trust her as a reliable community member.
