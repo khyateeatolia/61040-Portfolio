@@ -47,233 +47,199 @@ The application reduces the mess and risks of informal secondhand clothing excha
 
 ---
 
-Perfect, thanks for clarifying. I’ve rewritten your **Concept Design** and **Essential Synchronizations** so that everything is in **proper concept syntax using backticks**. I also added filtering by **price and category** to the `Feed` concept. Here’s the cleaned version in GitHub Markdown:
+# 3 — Concept design (4 focused concepts)
 
-```markdown
-## Concept Design
-
-### UniversityAuth
-
-**Purpose**  
-Provide verified identities for users based on school email addresses.  
-
-```
-
-Types
-EmailAddress
-UserId
-VerificationToken
-
-State
-pendingVerifications: Map[EmailAddress → VerificationToken]
-users: Map[UserId → {email: EmailAddress, displayName: String, avatarUrl: Url, verifiedAt: Timestamp}]
-
-Actions
-requestVerification(email: EmailAddress) → VerificationToken
-confirmVerification(token: VerificationToken) → UserId
-lookupUser(id: UserId) → UserRecord
-
-Notifications
-UserVerified(UserId)
-
-```
+I follow the Essence of Software guidance: each concept specifies *purpose*, *types*, *state*, *actions*, and *notifications/side-effects*. ([Essence criteria][9])
 
 ---
 
-### ItemListing
+## Concept A — `UniversityAuth`
 
-**Purpose**  
-Represent an item being sold or exchanged by a user.  
+**Purpose:**  
+Verify that a user is part of an academic community and provide an authenticated `UserId` that other concepts can depend on.
 
-```
+**Types:**  
+* `EmailAddress`  
+* `UserId`  
+* `VerificationToken`  
 
-Types
-ListingId
-UserId
-Tag
-CurrencyAmount
+**State:**  
+* `pending_verifications: Map<EmailAddress, VerificationToken>` — pending tokens awaiting confirmation  
+* `users: Map<UserId -> {email, displayName, avatarUrl, verifiedAt: Timestamp}]` — records of all verified users  
 
-State
-listings: Map[ListingId → {
-seller: UserId,
-title: String,
-description: String,
-photos: List[Url],
-tags: List[Tag],
-minAsk?: CurrencyAmount,
-createdAt: Timestamp,
-status: Enum{active, sold, withdrawn},
-currentHighestBid?: BidId
-}]
+**Actions:**  
+* `request_verification(email: EmailAddress) -> VerificationToken` — creates token, sends to email  
+* `confirm_verification(token: VerificationToken) -> UserId` — finalizes verification, issues `UserId`  
+* `lookup_user(id: UserId) -> UserRecord` — retrieve verified profile  
 
-Actions
-createListing(seller: UserId, title: String, description: String, photos: List[Url], tags: List[Tag], minAsk?: CurrencyAmount) → ListingId
-updateListing(listingId: ListingId, fields: Map[String → Any])
-setStatus(listingId: ListingId, status: Enum{active, sold, withdrawn})
-acceptBid(listingId: ListingId, bidId: BidId)
+**Notifications / Side-effects:**  
+* `UserVerified(UserId)` emitted when confirmation succeeds  
+* Email with verification link sent on `request_verification`  
 
-Notifications
-ListingCreated(ListingId)
-ListingUpdated(ListingId)
-ListingSold(ListingId, BidId)
-
-```
+**Notes:**  
+Allows any valid `.edu` or partner domain. To discourage spam, disposable addresses are rejected. Manual review may be flagged if suspicious activity is detected.
 
 ---
 
-### Bidding
+## Concept B — `ItemListing`
 
-**Purpose**  
-Track and manage bids placed by users on listings.  
+**Purpose:**  
+Represent an item for sale or exchange and track its lifecycle (active, withdrawn, sold).
 
-```
+**Types:**  
+* `ListingId`  
+* `UserId` (seller)  
+* `Tag` (controlled vocabulary for size, brand, condition)  
+* `CurrencyAmount`  
 
-Types
-BidId
-ListingId
-UserId
-CurrencyAmount
+**State:**  
+* `listings: Map<ListingId -> {
+    seller: UserId,
+    title: String,
+    description: String,
+    photos: List<Url>,
+    tags: List<Tag>,
+    minAsk?: CurrencyAmount,
+    createdAt: Timestamp,
+    status: Enum{Active, Sold, Withdrawn},
+    currentHighestBid?: BidId
+}]`
 
-State
-bidsByListing: Map[ListingId → List[BidId]]
-bidRecords: Map[BidId → {
-bidder: UserId,
-listing: ListingId,
-amount: CurrencyAmount,
-timestamp: Timestamp
-}]
+**Actions:**  
+* `create_listing(seller, title, description, photos, tags, minAsk?) -> ListingId`  
+* `update_listing(listingId, fields)` (title, description, tags, minAsk, photos)  
+* `set_status(listingId, status)`  
+* `accept_bid(listingId, bidId)` (records winning bid and sets status Sold)  
 
-Actions
-placeBid(bidder: UserId, listingId: ListingId, amount: CurrencyAmount) → BidId
-withdrawBid(bidId: BidId, bidder: UserId)
-getBids(listingId: ListingId) → List[BidRecord]
-getCurrentHigh(listingId: ListingId) → BidId?
+**Notifications:**  
+* `ListingCreated(ListingId)`  
+* `ListingUpdated(ListingId)`  
+* `ListingSold(ListingId, BidId)`  
 
-Notifications
-BidPlaced(ListingId, BidId)
-
-```
-
----
-
-### MessagingThread
-
-**Purpose**  
-Enable communication between buyers and sellers for each listing.  
-
-```
-
-Types
-ThreadId
-ListingId
-UserId
-Message
-
-State
-threads: Map[ThreadId → {
-listingId: ListingId,
-participants: Set[UserId],
-messages: List[Message]
-}]
-Message = {
-sender: UserId,
-text: String,
-attachments?: List[Url],
-timestamp: Timestamp
-}
-
-Actions
-startThread(user: UserId, listingId: ListingId) → ThreadId
-postMessage(threadId: ThreadId, user: UserId, text: String, attachments?: List[Url])
-markPickupComplete(threadId: ThreadId, user: UserId)
-flagMessage(threadId: ThreadId, messageId: Int, reason: String)
-
-Notifications
-NewMessage(ThreadId, Message)
-
-```
+**Notes:**  
+Each listing must include at least one photo. Tags are standardized to support filtering in the feed. The listing keeps a pointer to the `currentHighestBid` for efficient display.
 
 ---
 
-### Feed
+## Concept C — `Bidding`
 
-**Purpose**  
-Maintain a browsable and filterable view of available listings for all users.  
+**Purpose:**  
+Allow buyers to place bids on active listings, track bidding history, and expose current top bids.
 
-```
+**Types:**  
+* `BidId`  
+* `ListingId`  
+* `UserId`  
+* `CurrencyAmount`  
 
-Types
-FeedView
-ListingId
-Tag
-CurrencyAmount
-Category
+**State:**  
+* `bids_by_listing: Map<ListingId -> List<BidId>>` (time-ordered)  
+* `bid_records: Map<BidId -> {bidder, listing, amount, timestamp}>`  
 
-State
-feedIndex: List[ListingId] (ordered by createdAt)
-tagIndex: Map[Tag → List[ListingId]]
-categoryIndex: Map[Category → List[ListingId]]
-priceIndex: Map[ListingId → CurrencyAmount]
+**Actions:**  
+* `place_bid(bidder, listingId, amount) -> BidId`  
+* `withdraw_bid(bidId, bidder)`  
+* `get_bids(listingId) -> [BidRecord]`  
+* `get_current_high(listingId) -> BidId?`  
 
-Actions
-getLatest(n: Int) → FeedView
-filterByTag(tag: Tag) → FeedView
-filterByCategory(category: Category) → FeedView
-filterByPriceRange(min: CurrencyAmount, max: CurrencyAmount) → FeedView
-refreshFeed()
+**Notifications:**  
+* `BidPlaced(ListingId, BidId)`  
 
-Notifications
-FeedUpdated
-
-```
+**Notes:**  
+Top bid is updated in `ItemListing` through synchronization (not direct mutation). Bids remain as a full historical record, even after listing closes.
 
 ---
 
-## Essential Synchronizations
+## Concept D — `MessagingThread`
 
-### AuthRequired
-```
+**Purpose:**  
+Support structured communication between buyers and sellers around a listing, including pickup arrangements and moderation.
 
-When a user performs any action in ItemListing, Bidding, MessagingThread, or Feed,
-the system must verify that the user exists in UniversityAuth with a verified email.
+**Types:**  
+* `ThreadId`  
+* `ListingId`  
+* `UserId`  
+* `Message`  
 
-```
+**State:**  
+* `threads: Map<ThreadId -> {listingId, participants: Set<UserId>, messages: List<Message>}]`  
+* `Message = {sender: UserId, text: String, attachments?: List<Url>, timestamp: Timestamp}`  
 
-### BidPlacementSync
-```
+**Actions:**  
+* `start_thread(user, listingId) -> ThreadId` (auto-includes seller and buyer)  
+* `post_message(threadId, user, text, attachments?)`  
+* `mark_pickup_complete(threadId, user)`  
+* `flag_message(threadId, messageId, reason)`  
 
-Action: Bidding.placeBid
-Effect: ItemListing updates currentHighestBid for the relevant ListingId
-and notifies the seller.
+**Notifications:**  
+* `NewMessage(ThreadId, Message)`  
 
-```
+**Notes:**  
+Messages are anchored to listings for traceability. Moderators can review flagged content in context. Pickup completion is lightweight, signaling closure to both buyer and seller.
 
-### BidAcceptanceSync
-```
+---
 
-Action: ItemListing.acceptBid
-Effect: Bidding marks the winning BidId as accepted.
-MessagingThread starts or updates a thread between seller and winning buyer.
+# 4 — Essential synchronizations
 
-```
+Following the recommended `when/where/then` form. Each synchronization links concepts without breaking modularity. ([Essence sync guidance][9])
 
-### FeedRefreshSync
-```
+---
 
-Action: ItemListing.createListing or ItemListing.updateListing
-Effect: Feed.refreshFeed updates feedIndex, tagIndex, categoryIndex, and priceIndex
-so the new listing is visible and filterable to users.
+### Sync 1 — AuthRequired for Listings and Bids
 
-```
+* **When:** A user attempts `create_listing` or `place_bid`.  
+* **Where:** `UniversityAuth` + `ItemListing` + `Bidding`.  
+* **Then:** Verify `UserId` exists and has `verifiedAt != null`. If not verified, reject action and emit `AuthRequired`.  
+* **Rationale:** Prevents unverified or fake accounts from posting or bidding, ensuring trust in the campus marketplace.  
 
-### MessageFlagSync
-```
+---
 
-Action: MessagingThread.flagMessage
-Effect: Notification sent to Platform Operator for moderation.
+### Sync 2 — Place Bid → Update Listing and Notify Seller
 
-```
-```
+* **When:** `Bidding.place_bid(bidder, listingId, amount)` completes.  
+* **Where:** `Bidding` + `ItemListing` + `MessagingThread`.  
+* **Then:**  
+  * Append `BidId` to `bids_by_listing[listingId]`.  
+  * If `amount` > `currentHighest.amount`, update `ItemListing.currentHighestBid`.  
+  * Emit `BidPlaced(ListingId, BidId)` and notify seller.  
+  * If buyer has not yet messaged seller, suggest starting a thread.  
+* **Rationale:** Keeps bid history in `Bidding`, shows top bid in `ItemListing`, and alerts seller. Ensures smooth flow into negotiation.  
+
+---
+
+### Sync 3 — Accept Bid → Close Listing and Notify Buyer
+
+* **When:** `ItemListing.accept_bid(listingId, bidId)` invoked.  
+* **Where:** `ItemListing` + `Bidding` + `MessagingThread`.  
+* **Then:**  
+  * Set `ItemListing.status = Sold`.  
+  * Record `winner = bid.bidder`.  
+  * Emit `ListingSold(ListingId, BidId)`.  
+  * Notify winning buyer and append a system message to the listing’s thread (“Bid accepted — arrange pickup”).  
+  * Lock further bidding on that listing.  
+* **Rationale:** Ensures consistent state transition, notifies buyer promptly, and funnels both parties into a messaging flow.  
+
+---
+
+### Sync 4 — Feed Refresh on Listing Events
+
+* **When:** `ItemListing.create_listing` or `ItemListing.update_listing`.  
+* **Where:** `ItemListing` + `Feed`.  
+* **Then:**  
+  * Refresh `feedIndex`, `tagIndex`, `categoryIndex`, and `priceIndex`.  
+  * Emit `FeedUpdated` so users see the new or changed listing.  
+* **Rationale:** Keeps feed views synchronized with the most recent listing data. Supports filtering by tag, category, and price.  
+
+---
+
+### Sync 5 — Flag Message → Moderator Workflow
+
+* **When:** `MessagingThread.flag_message` is called.  
+* **Where:** `MessagingThread` + `Platform operator`.  
+* **Then:**  
+  * Create a moderation case with the flagged message and thread context.  
+  * Notify operator; optionally suspend sender until review.  
+* **Rationale:** Provides safety oversight and ensures inappropriate behavior is handled quickly.  
 
 The five concepts together form the foundation for CampusCloset. UniversityAuth ensures that only verified students can act in the system. ItemListing manages the representation and lifecycle of items. Bidding independently tracks offers while maintaining transparent history. MessagingThread supports direct communication tied to items. Feed provides an accessible, ordered, and filterable view of what is available, which makes the marketplace lively and usable. Synchronizations connect these concepts in essential places without breaking their independence. This design follows the rubric by ensuring clear purposes, persistent state, independence of concepts, and explicit synchronizations.
 
