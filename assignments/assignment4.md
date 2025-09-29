@@ -25,7 +25,7 @@ Students who want to rehome clothing or discover bargains often face disorganize
 * **Depop** ([depop.com](https://www.depop.com)). Depop is a social resale marketplace that is especially popular among younger users. Its design highlights the importance of having a feed-based interface and descriptive tags for clothing items.
 * **Mercari** ([mercari.com](https://www.mercari.com)). Mercari focuses heavily on classification and shipping, which illustrates different tradeoffs compared to local pickup exchanges. This shows how design choices around logistics impact user experience.
 * **Rumie College Marketplace** ([rumie.com](https://rumie.com/college-marketplace)). Rumie provides a campus-focused exchange platform that requires school-based verification. This supports the idea that restricting access to students increases trust and safety.
-* **University Exchange Groups** ([example Facebook group](https://www.facebook.com/groups/217708995001165/)). Many universities have informal exchange groups hosted on platforms like Facebook. These groups validate the need for a safer, more structured, and campus-specific solution rather than relying on loosely moderated communities.
+* **University Exchange Groups** ([Wellesley Facebook group](https://www.facebook.com/groups/217708995001165/)). Many universities have informal exchange groups hosted on platforms like Facebook. These groups validate the need for a safer, more structured, and campus-specific solution rather than relying on loosely moderated communities.
 
 ---
 
@@ -330,6 +330,17 @@ Maintain a browsable and filterable view of available listings for all users.
 The five concepts together form the foundation for CampusCloset. `UserAccount` ensures that only verified students with unique usernames can act in the system and provides public profile pages. `ItemListing` manages the representation and lifecycle of items, while `Bidding` tracks transparent bid histories. `MessagingThread` supports structured communication, and `Feed` provides searchable and filterable access to items. Synchronizations ensure that actions flow smoothly between concepts without breaking modularity.
 
 ---
+
+### UX designs
+![Image 1](https://github.com/user-attachments/assets/4858e6ea-68fd-44b6-b637-f07214d26ec6)
+
+![Image 2](https://github.com/user-attachments/assets/ae70e8fc-2a77-48cd-bf66-3ab64d92b89c)
+
+![Image 3](https://github.com/user-attachments/assets/1ebcf4eb-8776-4785-b7dd-f37b952deb74)
+
+
+---
+
 ## User Journey
 
 Meet Maya, a sophomore living in a college dorm. As the semester begins, she realizes she no longer needs the extra desk chair she bought last year. At the same time, she is looking for an affordable winter coat. Maya has heard about the campus marketplace app and decides to give it a try.
