@@ -31,7 +31,7 @@ Students who want to rehome clothing or discover bargains often face disorganize
 
 ## Application Pitch
 
-### Application Name:
+### Application Name: CampusCloset
 
 CampusCloset is an application that provides students with a simple and trusted place to exchange clothes, shoes, and accessories within their campus communities.
 
@@ -53,7 +53,7 @@ The application reduces the mess and risks of informal secondhand clothing excha
 
 ---
 
-# 3 — Concept design (4 focused concepts)
+# 3 — Concept design 
 
 I follow the Essence of Software guidance: each concept specifies *purpose*, *types*, *state*, *actions*, and *notifications/side-effects*.
 
@@ -332,12 +332,11 @@ The five concepts together form the foundation for CampusCloset. `UserAccount` e
 ---
 
 ### UX designs
-![Image 1](https://github.com/user-attachments/assets/4858e6ea-68fd-44b6-b637-f07214d26ec6)
+<img src="https://github.com/user-attachments/assets/4858e6ea-68fd-44b6-b637-f07214d26ec6" alt="Image 1" width="350"/>
 
-![Image 2](https://github.com/user-attachments/assets/ae70e8fc-2a77-48cd-bf66-3ab64d92b89c)
+<img src="https://github.com/user-attachments/assets/ae70e8fc-2a77-48cd-bf66-3ab64d92b89c" alt="Image 2" width="350"/>
 
-![Image 3](https://github.com/user-attachments/assets/1ebcf4eb-8776-4785-b7dd-f37b952deb74)
-
+<img src="https://github.com/user-attachments/assets/1ebcf4eb-8776-4785-b7dd-f37b952deb74" alt="Image 3" width="350"/>
 
 ---
 
