@@ -328,11 +328,11 @@ The five concepts together form the foundation for CampusCloset. `UserAccount` e
 ---
 
 ## UX designs
-<img src="https://github.com/user-attachments/assets/4858e6ea-68fd-44b6-b637-f07214d26ec6" alt="Image 1" width="400"/>
+<img src="https://github.com/user-attachments/assets/4858e6ea-68fd-44b6-b637-f07214d26ec6" alt="Image 1" width="600"/>
 
-<img src="https://github.com/user-attachments/assets/ae70e8fc-2a77-48cd-bf66-3ab64d92b89c" alt="Image 2" width="400"/>
+<img src="https://github.com/user-attachments/assets/ae70e8fc-2a77-48cd-bf66-3ab64d92b89c" alt="Image 2" width="600"/>
 
-<img src="https://github.com/user-attachments/assets/1ebcf4eb-8776-4785-b7dd-f37b952deb74" alt="Image 3" width="400"/>
+<img src="https://github.com/user-attachments/assets/1ebcf4eb-8776-4785-b7dd-f37b952deb74" alt="Image 3" width="600"/>
 
 ---
 
